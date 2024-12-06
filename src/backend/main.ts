@@ -6,6 +6,7 @@ import { errorHandler } from "./handler/error.handler";
 import { Logger } from "./handler/logger.handler";
 import { routes } from "./routes/routes";
 import { config } from "./config/config";
+import { upload } from "./config/storage";
 
 const app = express();
 
@@ -16,6 +17,21 @@ app.use(express.static("public"));
 app.use(cors());
 app.use(Logger); // Logging middleware
 app.use(routes); // Routes middleware
+
+app.post("/upload", upload.single("file"), (req, res) => {
+  if (req.file) {
+    res.status(200).json({
+      status: true,
+      message: "File uploaded successfully",
+      data: req.file,
+    });
+  } else {
+    res.status(400).json({
+      status: false,
+      message: "File not uploaded",
+    });
+  }
+});
 app.use(errorHandler); // Error handling middleware
 
 // Server startup
