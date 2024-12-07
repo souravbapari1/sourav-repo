@@ -1,4 +1,5 @@
-export const config = {
+export const configApp = {
+  hostUrl: "http://localhost:4000",
   appName: "My Application",
   port: 4000,
   jwt: {
