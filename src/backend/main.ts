@@ -5,8 +5,9 @@ import express from "express";
 import { errorHandler } from "./handler/error.handler";
 import { Logger } from "./handler/logger.handler";
 import { routes } from "./routes/routes";
-import { config } from "./config/config";
+
 import { upload } from "./config/storage";
+import { configApp } from "./config/config";
 
 const app = express();
 
@@ -35,11 +36,11 @@ app.post("/upload", upload.single("file"), (req, res) => {
 app.use(errorHandler); // Error handling middleware
 
 // Server startup
-app.listen(config.port, async () => {
+app.listen(configApp.port, async () => {
   try {
     await prisma.$connect();
     console.log(chalk.green("> Database connected"));
-    console.log(chalk.green(`> Server started on port ${config.port}`));
+    console.log(chalk.green(`> Server started on port ${configApp.port}`));
   } catch (error) {
     console.error(
       chalk.red("Failed to connect to the database:"),

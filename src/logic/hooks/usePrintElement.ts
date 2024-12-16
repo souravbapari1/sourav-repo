@@ -32,7 +32,6 @@ export const usePrintElement = () => {
     const canvasWidth = canvas.width;
     const canvasHeight = canvas.height;
 
-    const imgHeightRatio = canvasHeight / canvasWidth;
     const pageCanvasHeight = (pdfHeight * canvasWidth) / pdfWidth;
 
     let currentPosition = 0;
