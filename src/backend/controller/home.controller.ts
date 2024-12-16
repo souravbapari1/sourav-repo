@@ -3,5 +3,5 @@ export const homeGetController = (
   req: express.Request,
   res: express.Response
 ) => {
-  res.send("Hello World");
+  res.send(req.body);
 };
