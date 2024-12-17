@@ -9,7 +9,7 @@
     "lint": "next lint",
     "backend": "bun --watch run src/backend/main.ts",
     "migrate": "prisma migrate dev --name",
-    "validate:schema": "node schema.js",
+    "validate:schema": "node schema.js && bun ./auto/prismatypes.ts",
     "backend:routes": "bun ./auto/routesimport.ts"
   },
   "dependencies": {
