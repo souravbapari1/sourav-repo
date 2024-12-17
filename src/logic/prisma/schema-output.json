@@ -1,0 +1,25 @@
+{
+  "models": {
+    "User": {
+      "fields": [
+        {
+          "field": "id",
+          "type": "Int",
+          "isArray": false
+        },
+        {
+          "field": "createdAt",
+          "type": "DateTime",
+          "isArray": false
+        },
+        {
+          "field": "updatedAt",
+          "type": "DateTime",
+          "isArray": false
+        }
+      ],
+      "relations": []
+    }
+  },
+  "enums": {}
+}
