@@ -295,4 +295,25 @@ export class DateUtils {
     const day = String(date.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`;
   }
+
+  /**
+   * Format a date to a readable string in a specified format.
+   * @param dateStr {string} The date string to format.
+   * @param formats {Array<FormatType>} The format strings (e.g. ['YYYY', 'MM', 'DD'], ['HH', 'mm', 'ss'], etc.).
+   * @returns {string} The formatted date string.
+   */
+  static formatDate(dateStr: string, formats: Array<FormatType>): string {
+    if (!this.isValidDate(dateStr)) throw new Error("Invalid date");
+    const date = new Date(dateStr);
+    const components: Record<FormatType, string> = {
+      YYYY: date.getFullYear().toString(),
+      MM: String(date.getMonth() + 1).padStart(2, "0"),
+      DD: String(date.getDate()).padStart(2, "0"),
+      HH: String(date.getHours()).padStart(2, "0"),
+      mm: String(date.getMinutes()).padStart(2, "0"),
+      ss: String(date.getSeconds()).padStart(2, "0"),
+    };
+    return formats.map((format) => components[format]).join("");
+  }
 }
+type FormatType = "YYYY" | "MM" | "DD" | "HH" | "mm" | "ss";
